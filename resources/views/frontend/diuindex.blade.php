@@ -18,7 +18,7 @@
                     <div class="col-12 col-lg-7">
                         <div class="single-blog-post featured-post">
                             <div class="post-thumb">
-                                <a href="#"><img  style="height: 327px;width: 413px" src="{{ asset('/uploads/posts/'. $frontPostByCategory1->image) }}" alt=""></a>
+                                <a href="#"><img  style="height: 327px;width: 413px" src="{{ asset('/uploads/posts/'. $frontPostByCategory1->image) }}" alt="" style="width:550px"></a>
                             </div>
                             <div class="post-data">
                                 <a href="{{ route('categoryPost',$frontPostByCategory1->diucat_id) }}" class="post-catagory">{{ $frontPostByCategory1->name }}</a>
@@ -42,7 +42,7 @@
                         <!-- Single Featured Post -->
                         <div class="single-blog-post featured-post-2">
                             <div class="post-thumb">
-                                <a href="#"><img src="{{ asset('/uploads/posts/'. $frontPostByCategory2->image) }}" alt=""></a>
+                                <a href="#"><img src="{{ asset('/uploads/posts/'. $frontPostByCategory2->image) }}" alt="" style="width: 400px;"></a>
                             </div>
                             <div class="post-data">
                                 <a href="{{ route('categoryPost',$frontPostByCategory2->diucat_id) }}" class="post-catagory">{{ $frontPostByCategory2->name }}</a>
@@ -62,7 +62,7 @@
                         <!-- Single Featured Post -->
                         <div class="single-blog-post featured-post-2">
                             <div class="post-thumb">
-                                <a href="#"><img src="{{ asset('/uploads/posts/'. $frontPostByCategory3->image) }}" alt=""></a>
+                                <a href="#"><img src="{{ asset('/uploads/posts/'. $frontPostByCategory3->image) }}" alt="" style="width: 400px;"></a>
                             </div>
                             <div class="post-data">
                                 <a href="{{ route('categoryPost',$frontPostByCategory3->diucat_id) }}" class="post-catagory">{{ $frontPostByCategory3->name }}</a>
