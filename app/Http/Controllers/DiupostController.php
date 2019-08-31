@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cat;
 use App\Diucat;
+use App\Diupost;
 use App\Post;
 use App\Slider;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Session;
 use Image;
 use Nwidart\ForecastPhp\Forecast;
 
-class PostController extends Controller
+class DiupostController extends Controller
 {
     const UPLOAD_DIR = '/uploads/posts/';
 
@@ -21,9 +22,9 @@ class PostController extends Controller
     {
         //
 
-        $posts = Post::all();
-        //dd($posts);
-        return view('admin.post.postlist',compact('posts'));
+        $diuposts = Diupost::all();
+//        dd($diuposts);
+        return view('admin.diupost.postlist',compact('diuposts'));
     }
 
     /**
@@ -33,12 +34,12 @@ class PostController extends Controller
      */
     public function create()
     {
-        
-        $cat = Cat::all();
 
-        $posts = Post::all();
-        
-        return view('admin.post.create',compact('cat','posts'));
+        $cat = Diucat::all();
+
+        $posts = Diupost::all();
+
+        return view('admin.diupost.create',compact('cat','posts'));
     }
 
     /**
@@ -49,31 +50,7 @@ class PostController extends Controller
      */
     public function store(Request $request, Post $post )
     {
-        // $data=$request->all();
-        // dd($data);
 
-        // $rules = [
-        //     'title'  => 'required',
-        //     'cat_id' => 'required',
-        //     'contentt' => 'required',
-        //     'tag'  => 'required',
-        //     'status'  => 'required',
-        //     'author'  => 'required'
-        // ];
-
-        // $validator = \Validator::make($request->all(), $rules);
-
-        // if($validator->fails()){
-        //     return redirect()->back()->withErrors($validator)->withInput();
-        // }else{
-//           $post = new Post();
-//            $post->title = $request->title;
-//            $post->cat_id = $request->cat_id;
-//            $post->content = $request->contentt;
-//            $post->tag = $request->tag;
-//            $post->status = $request->status;
-//            $post->author = $request->author;
-//            $post->save();
 
         $data=$request->all();
 
@@ -81,84 +58,52 @@ class PostController extends Controller
             $data['image'] = $this->uploadImage($request->image);
         }
 //        dd($data);
-        Post::create($data);
+        Diupost::create($data);
 
 
 
-        return redirect(url('/post'));
+        return redirect(url('/diupost'));
 
-        
+
     }
 
 
     public function show(Post $post)
-{
-    //  $rpost = Post::where('status', 'Pin Post')->get();
-    //$post= '$relatedPost';
-    //  dd($rpost);
+    {
+        //  $rpost = Post::where('status', 'Pin Post')->get();
+        //$post= '$relatedPost';
+        //  dd($rpost);
 
-    //$latest = Post::orderBy('desc')->get();
-   // dd($latest);
-    //return view('layouts.sidebar')->with('latest', $latest);
-    // return view('layouts.index',compact('relatedPost'));
+        //$latest = Post::orderBy('desc')->get();
+        // dd($latest);
+        //return view('layouts.sidebar')->with('latest', $latest);
+        // return view('layouts.index',compact('relatedPost'));
 
-}
+    }
 
     public function home()
     {
-        $data = Post::all();
+        $data = Diupost::all();
         $cat = Cat::all();
         $diucat = Diucat::all();
         $date = Carbon::now()->format('d M,Y');
-        $brknews=Post::with('cat')->orderBy('id', 'desc')->first();
 
-        $latest=Post::with('cat')->orderBy('id', 'desc')->take(6)->get();
-        $popular=Post::with('cat')->orderBy('count', 'desc')->take(6)->get();
+
+        $latest=Diupost::with('diucat')->orderBy('id', 'desc')->take(6)->get();
+        $popular=Diupost::with('diucat')->orderBy('count', 'desc')->take(6)->get();
         // $popular=DB::table('posts')->join('cats', 'cats.id', '=', 'posts.cat_id')->orderBy('count','desc')->take(6)->get();
+//        dd($popular);
 
-        
-        $frontPostByCategory1=DB::table('posts')->join('cats', 'cats.id', '=', 'posts.cat_id')
-        ->where('cat_id','1')->first();
-        $frontPostByCategory2=DB::table('posts')->join('cats', 'cats.id', '=', 'posts.cat_id')
-        ->where('cat_id','2')->first();
-        $frontPostByCategory3=DB::table('posts')->join('cats', 'cats.id', '=', 'posts.cat_id')
-        ->where('cat_id','3')->first();
-        $frontPostByCategory4=DB::table('posts')->join('cats', 'cats.id', '=', 'posts.cat_id')
-        ->where('cat_id','4')->take(3)->get();
+        $frontPostByCategory1=DB::table('diuposts')->join('diucats', 'diucats.id', '=', 'diuposts.diucat_id')
+            ->where('diucat_id','1')->first();
+        $frontPostByCategory2=DB::table('diuposts')->join('diucats', 'diucats.id', '=', 'diuposts.diucat_id')
+            ->where('diucat_id','2')->first();
+        $frontPostByCategory3=DB::table('diuposts')->join('diucats', 'diucats.id', '=', 'diuposts.diucat_id')
+            ->where('diucat_id','3')->first();
 
-        $inter_breaking_posts=DB::table('posts')->where('cat_id','4')->get();
+        $inter_breaking_posts=DB::table('diuposts')->where('diucat_id','4')->get();
 
-        $test = Post::with('cat')->orderBy('id','desc')->where('status','Pin Post')
-            ->where('cat_id','2')->take(1)
-            ->get();
-
-        $testto = Post::with('cat')->orderBy('id','desc')->where('status','Normal Post')->where('cat_id', '1')->take(4)
-            ->get();
-
-        $inter = Post::with('cat')->orderBy('id','desc')->where('status','Normal Post')
-            ->where('cat_id', '2')->take(4)
-            ->get();
-
-        $sports = Post::with('cat')->orderBy('id','desc')->where('status','Pin Post')
-            ->where('cat_id','3')->take(1)
-            ->get();
-
-        $sportsin = Post::with('cat')->orderBy('id','desc')->where('status','Normal Post')
-            ->where('cat_id', '3')->take(4)
-            ->get();
-
-
-        $science = Post::with('cat')->orderBy('id','desc')->where('status','Pin Post')
-            ->where('cat_id','4')->take(1)
-            ->get();
-
-        $tech = Post::with('cat')->orderBy('id','desc')->where('status','Normal Post')
-            ->where('cat_id', '4')->take(4)
-            ->get();
-
-        $slider=Slider::all();
-        
-          return view('frontend.index',compact('data','latest','brknews','popular','date','cat','diucat','frontPostByCategory1','frontPostByCategory2','frontPostByCategory3','frontPostByCategory4','inter_breaking_posts','slider'));
+        return view('frontend.diuindex',compact('data','latest','popular','date','cat','diucat','frontPostByCategory1','frontPostByCategory2','frontPostByCategory3','frontPostByCategory4','inter_breaking_posts','slider'));
     }
 
 
@@ -166,7 +111,7 @@ class PostController extends Controller
     {
         $latest = Post::with('cat')->orderBy('id','desc')->where('status','Normal Post')->take(4)
             ->get();
-    return view ('layouts.sidebar',compact('latest'));
+        return view ('layouts.sidebar',compact('latest'));
     }
 
 
@@ -210,17 +155,17 @@ class PostController extends Controller
         return view('frontend.categoriesposts',compact('inter_breaking_posts','categoryposts','date','cat','popular'));
     }
 
- //public function side()
-  // {
-       // Post::where('category_id', $post->category_id)->where('id', '!=', $post->id)->get();
-      // $sidebar = Post::where('cat_id', $post->cat_id)->where('id', '!=', $post->id)->get();
+    //public function side()
+    // {
+    // Post::where('category_id', $post->category_id)->where('id', '!=', $post->id)->get();
+    // $sidebar = Post::where('cat_id', $post->cat_id)->where('id', '!=', $post->id)->get();
     //$relatedPost = Post::where('cat_id', $post->cat_id)->where('id', '!=', $post->id)->get();
-      // dd($sidebar);
+    // dd($sidebar);
     //   $testto = Post::with('cat')->orderBy('id','desc')->where('status','Normal Post')->where('cat_id', '1')
     //   ->get();
-       //dd($data);
-     //  return view('layouts.index',compact(['testto']));
-  // }
+    //dd($data);
+    //  return view('layouts.index',compact(['testto']));
+    // }
 
 
 // public function weather(){
@@ -235,12 +180,7 @@ class PostController extends Controller
 //     }
 
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Post $post)
     {
         //
@@ -250,13 +190,7 @@ class PostController extends Controller
         return view('admin.post.editpost', $data,compact('posts'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Post $post)
     {
         //

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>News Feed Admin Theme</title>
+    <title>News Feed Admin</title>
 
 
 
@@ -52,7 +52,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+            <a class="navbar-brand" href="{{ url('admin/adminindex') }}">Newsfeed Admin</a>
         </div>
         <!-- /.navbar-header -->
 

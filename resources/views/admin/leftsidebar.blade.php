@@ -13,7 +13,7 @@
                 <!-- /input-group -->
             </li>
             <li>
-                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                <a href="{{ url('admin/adminindex') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
@@ -28,6 +28,19 @@
                 <!-- /.nav-second-level -->
             </li>
 
+            <li>
+                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Diu Category<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ url('diucat/create') }}">Add Category</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/diucat') }}">Category List</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+
 
             <li>
                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Post<span class="fa arrow"></span></a>
@@ -37,6 +50,19 @@
                     </li>
                     <li>
                         <a href="{{ url('/post') }}">Post List</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+
+            <li>
+                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Diu Post<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ url('/diupost/create') }}">Add Post</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/diupost') }}">Post List</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

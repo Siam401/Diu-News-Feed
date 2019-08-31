@@ -110,6 +110,22 @@
                             @endforeach
                             <li><a href="#">About Us</a></li>
                             <li><a href="contact.html">Contact</a></li>
+                            @php
+                                $viewer_id=session('viewer_id')
+                            @endphp
+                            <?php if($viewer_id != NULL){ ?>
+
+                            <li><a href="#">Diu</a>
+                                <ul class="dropdown">
+                                    <li><a href="{{ route('diu.index') }}">Home</a></li>
+                                    @foreach($diucat as $rows)
+                                        <li><a href="">{{ $rows->name }}</a></li>
+                                    @endforeach
+
+                                </ul>
+                            </li>
+                            <?php } ?>
+
                         </ul>
                     </div>
                     <!-- Nav End -->

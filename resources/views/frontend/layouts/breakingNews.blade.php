@@ -9,9 +9,7 @@
                     </div>
                     <div id="breakingNewsTicker" class="ticker">
                         <ul>
-                            <li><a href="#">Financial news: A new company is born today at the stock market,Financial news: A new company is born today at the stock market</a></li>
-                            <li><a href="#">Welcome to Colorlib Family.Financial news: A new company is born today at the stock market</a></li>
-                            <li><a href="#">Nam eu metus sitsit amet, consec!Financial news: A new company is born today at the stock market</a></li>
+                            <li><a href="{{ route('singlePost',$brknews->id) }}">{{ $brknews->title }}</a></li>
                         </ul>
                     </div>
                 </div>

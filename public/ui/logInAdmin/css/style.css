@@ -21935,7 +21935,9 @@ div.tagsinput {
 
 .auth .login-half-bg {
   background: url("../images/auth/login_2.jpg");
-  background-size: cover; }
+  background-size: 571px;
+  margin-top: 111px;
+}
 
 .auth.register-full-bg {
   background: url("../images/auth/register_1.jpg");
@@ -22209,7 +22211,8 @@ div.tagsinput {
   padding-top: 80px;
   padding-bottom: 0;
   padding-left: 0;
-  padding-right: 0; }
+  padding-right: 0;
+}
   .landing-page .footer .footer-top {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
     .landing-page .footer .footer-top .brand-logo {

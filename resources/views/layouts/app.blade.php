@@ -35,8 +35,8 @@
                                     @yield('content')
                                 </div>
                             </div>
-                            <div class="col-lg-6 login-half-bg d-flex flex-row">
-                                <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2018  All rights reserved.</p>
+                            <div class="col-lg-6 d-flex flex-row">
+                                <img src="{{ asset('ui/logInAdmin/images/auth/login_2.jpg') }}" style="height: 300px;width: 100%;margin-top: 99px;">
                             </div>
                         </div>
                     </div>

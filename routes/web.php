@@ -22,6 +22,7 @@ Route::group(['prefix'=>'/'],function(){
     Route::get('/viewer/registration/page','ViewerController@registration')->name('viewer.registrationindex');
     Route::post('/viewer/registration','ViewerController@registration_store')->name('viewer.store');
     Route::get('/viewer/logout','ViewerController@logout_viewer')->name('viewer.logout');
+    Route::get('/diu/','DiupostController@home')->name('diu.index');
 
 });
 
@@ -37,6 +38,8 @@ Route::group(['middleware' => ['auth']], function () {
     });
     Route::resource('cat', 'CatController');
     Route::resource('post', 'PostController');
+    Route::resource('diupost', 'DiupostController');
+    Route::resource('diucat', 'DiucatController');
     Route::resource('slider', 'SliderController');
     Route::resource('contact', 'ContactController');
     Route::resource('comment', 'CommentController');
