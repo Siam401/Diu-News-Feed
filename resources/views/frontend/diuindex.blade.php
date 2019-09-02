@@ -21,7 +21,7 @@
                                 <a href="#"><img  style="height: 327px;width: 413px" src="{{ asset('/uploads/posts/'. $frontPostByCategory1->image) }}" alt="" style="width:550px"></a>
                             </div>
                             <div class="post-data">
-                                <a href="{{ route('categoryPost',$frontPostByCategory1->diucat_id) }}" class="post-catagory">{{ $frontPostByCategory1->name }}</a>
+                                <a href="{{ route('diu.catposts',$frontPostByCategory1->diucat_id) }}" class="post-catagory">{{ $frontPostByCategory1->name }}</a>
                                 <a href="{{ route('diusinglePost',$frontPostByCategory1->id) }}" class="post-title">
                                     <h6>{{ $frontPostByCategory1->title }}</h6>
                                 </a>
@@ -45,7 +45,7 @@
                                 <a href="#"><img src="{{ asset('/uploads/posts/'. $frontPostByCategory2->image) }}" alt="" style="width: 400px;"></a>
                             </div>
                             <div class="post-data">
-                                <a href="{{ route('categoryPost',$frontPostByCategory2->diucat_id) }}" class="post-catagory">{{ $frontPostByCategory2->name }}</a>
+                                <a href="{{ route('diu.catposts',$frontPostByCategory2->diucat_id) }}" class="post-catagory">{{ $frontPostByCategory2->name }}</a>
                                 <div class="post-meta">
                                     <a href="{{ route('diusinglePost',$frontPostByCategory2->id) }}" class="post-title">
                                         <h6>{{ $frontPostByCategory2->title }}</h6>
@@ -65,7 +65,7 @@
                                 <a href="#"><img src="{{ asset('/uploads/posts/'. $frontPostByCategory3->image) }}" alt="" style="width: 400px;"></a>
                             </div>
                             <div class="post-data">
-                                <a href="{{ route('categoryPost',$frontPostByCategory3->diucat_id) }}" class="post-catagory">{{ $frontPostByCategory3->name }}</a>
+                                <a href="{{ route('diu.catposts',$frontPostByCategory3->diucat_id) }}" class="post-catagory">{{ $frontPostByCategory3->name }}</a>
                                 <div class="post-meta">
                                     <a href="{{ route('diusinglePost',$frontPostByCategory3->id) }}" class="post-title">
                                         <h6>{{ $frontPostByCategory3->title }}</h6>

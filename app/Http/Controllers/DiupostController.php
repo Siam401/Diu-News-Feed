@@ -125,15 +125,15 @@ class DiupostController extends Controller
 
 
     public function single($id){
-        $post=Post::findOrfail($id);
-        $popular=DB::table('posts')->orderBy('count','desc')->take(6)->get();
-        DB::table('posts')->where('id',$id)->increment('count');
+        $post=Diupost::findOrfail($id);
+        $popular=DB::table('diuposts')->orderBy('count','desc')->take(6)->get();
+        DB::table('diuposts')->where('id',$id)->increment('count');
         $date = Carbon::now()->format('d M,Y');
         $cat = Cat::all();
         $diucat = Diucat::all();
         $related_id=$post->cat_id;
-        $relateds=DB::table('posts')->where('cat_id',$related_id)->take(2)->get();
-        $singlepost=Post::findOrfail($id);
+        $relateds=DB::table('diuposts')->where('diucat_id',$related_id)->take(2)->get();
+        $singlepost=Diupost::findOrfail($id);
 
 
 
@@ -150,7 +150,7 @@ class DiupostController extends Controller
         $popular=Diupost::with('diucat')->orderBy('count', 'desc')->take(6)->get();
         $date = Carbon::now()->format('d M,Y');
         $cat = Cat::all();
-        $diucategoryposts=Post::where('cat_id',$id)->get();
+        $diucategoryposts=Diupost::where('diucat_id',$id)->get();
 
 //        dd($id);
 //        dd($posts);
