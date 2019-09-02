@@ -108,8 +108,8 @@
                             @foreach($cat as $rows)
                                 <li><a href="{{ route('categoryPost',$rows->id) }}">{{ $rows->name }}</a></li>
                             @endforeach
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            {{--<li><a href="#">About Us</a></li>--}}
+                            {{--<li><a href="contact.html">Contact</a></li>--}}
                             @php
                                 $viewer_id=session('viewer_id')
                             @endphp
