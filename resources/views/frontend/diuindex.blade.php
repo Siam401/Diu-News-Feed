@@ -22,7 +22,7 @@
                             </div>
                             <div class="post-data">
                                 <a href="{{ route('categoryPost',$frontPostByCategory1->diucat_id) }}" class="post-catagory">{{ $frontPostByCategory1->name }}</a>
-                                <a href="{{ route('singlePost',$frontPostByCategory1->id) }}" class="post-title">
+                                <a href="{{ route('diusinglePost',$frontPostByCategory1->id) }}" class="post-title">
                                     <h6>{{ $frontPostByCategory1->title }}</h6>
                                 </a>
                                 <div class="post-meta">
@@ -47,7 +47,7 @@
                             <div class="post-data">
                                 <a href="{{ route('categoryPost',$frontPostByCategory2->diucat_id) }}" class="post-catagory">{{ $frontPostByCategory2->name }}</a>
                                 <div class="post-meta">
-                                    <a href="{{ route('singlePost',$frontPostByCategory2->id) }}" class="post-title">
+                                    <a href="{{ route('diusinglePost',$frontPostByCategory2->id) }}" class="post-title">
                                         <h6>{{ $frontPostByCategory2->title }}</h6>
                                     </a>
                                     <!-- Post Like & Post Comment -->
@@ -67,7 +67,7 @@
                             <div class="post-data">
                                 <a href="{{ route('categoryPost',$frontPostByCategory3->diucat_id) }}" class="post-catagory">{{ $frontPostByCategory3->name }}</a>
                                 <div class="post-meta">
-                                    <a href="{{ route('singlePost',$frontPostByCategory3->id) }}" class="post-title">
+                                    <a href="{{ route('diusinglePost',$frontPostByCategory3->id) }}" class="post-title">
                                         <h6>{{ $frontPostByCategory3->title }}</h6>
                                     </a>
                                     <!-- Post Like & Post Comment -->
@@ -108,7 +108,7 @@
                                 </div>
                                 <div class="post-data">
                                     <a href="#" class="post-catagory">{{ $rows->diucat->name }}</a>
-                                    <a href="{{ route('singlePost',$rows->id) }}" class="post-title">
+                                    <a href="{{ route('diusinglePost',$rows->id) }}" class="post-title">
                                         <h6>{{ $rows->title }}</h6>
                                     </a>
                                     {{--<div class="post-meta d-flex align-items-center">--}}
@@ -134,7 +134,7 @@
                 <!-- Single Popular Blog -->
                     @foreach($popular as $rows)
                         <div class="single-popular-post">
-                            <a href="{{ route('singlePost',$rows->id) }}">
+                            <a href="{{ route('diusinglePost',$rows->id) }}">
                                 <h6><span>{{ $sl++ }}.</span>{{ $rows->title }}</h6>
                             </a>
                             <p>{{ $rows->created_at }}</p>
@@ -181,7 +181,7 @@
                                         <a href="#"><img style="height: 233px;width:350px" src="{{ asset('/uploads/posts/'. $rows->image) }}" alt=""></a>
                                     </div>
                                     <div class="post-data">
-                                        <a href="{{ route('singlePost',$rows->id) }}" class="post-title">
+                                        <a href="{{ route('diusinglePost',$rows->id) }}" class="post-title">
                                             <h6>{{ $rows->title }}</h6>
                                         </a>
                                         <div class="post-meta">

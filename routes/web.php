@@ -23,6 +23,8 @@ Route::group(['prefix'=>'/'],function(){
     Route::post('/viewer/registration','ViewerController@registration_store')->name('viewer.store');
     Route::get('/viewer/logout','ViewerController@logout_viewer')->name('viewer.logout');
     Route::get('/diu/','DiupostController@home')->name('diu.index');
+    Route::get('/diu/category/{id}/posts','DiupostController@catposts')->name('diu.catposts');
+    Route::get('diu/single/{id}',['as'=>'diusinglePost', 'uses'=>'DiupostController@single']);
 
 });
 

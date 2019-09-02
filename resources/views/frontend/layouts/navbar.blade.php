@@ -119,7 +119,7 @@
                                 <ul class="dropdown">
                                     <li><a href="{{ route('diu.index') }}">Home</a></li>
                                     @foreach($diucat as $rows)
-                                        <li><a href="">{{ $rows->name }}</a></li>
+                                        <li><a href="{{ route('diu.catposts',$rows->id) }}">{{ $rows->name }}</a></li>
                                     @endforeach
 
                                 </ul>

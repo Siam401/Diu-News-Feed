@@ -130,7 +130,7 @@ class DiupostController extends Controller
         DB::table('posts')->where('id',$id)->increment('count');
         $date = Carbon::now()->format('d M,Y');
         $cat = Cat::all();
-        $inter_breaking_posts=DB::table('posts')->where('cat_id','4')->get();
+        $diucat = Diucat::all();
         $related_id=$post->cat_id;
         $relateds=DB::table('posts')->where('cat_id',$related_id)->take(2)->get();
         $singlepost=Post::findOrfail($id);
@@ -138,21 +138,23 @@ class DiupostController extends Controller
 
 
 //        dd($relateds);
-        return view('frontend.single',compact('singlepost','inter_breaking_posts','relateds','date','cat','popular'));
+        return view('frontend.diusingle',compact('singlepost','diucat','relateds','date','cat','popular'));
     }
 
 
-    public function categoriesposts($id){
+    public function catposts($id){
 //        $posts=DB::table('posts')->where('cat_id',$id)->get();
-        $popular=DB::table('posts')->orderBy('count','desc')->take(6)->get();
+
+       // dd($id);
+        $diucat = Diucat::all();
+        $popular=Diupost::with('diucat')->orderBy('count', 'desc')->take(6)->get();
         $date = Carbon::now()->format('d M,Y');
         $cat = Cat::all();
-        $inter_breaking_posts=DB::table('posts')->where('cat_id','4')->get();
-        $categoryposts=Post::where('cat_id',$id)->get();
+        $diucategoryposts=Post::where('cat_id',$id)->get();
 
 //        dd($id);
 //        dd($posts);
-        return view('frontend.categoriesposts',compact('inter_breaking_posts','categoryposts','date','cat','popular'));
+        return view('frontend.diucategoriesposts',compact('diucat','inter_breaking_posts','diucategoryposts','date','cat','popular'));
     }
 
     //public function side()
