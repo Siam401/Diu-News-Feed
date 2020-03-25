@@ -108,13 +108,7 @@
                             @foreach($cat as $rows)
                                 <li><a href="{{ route('categoryPost',$rows->id) }}">{{ $rows->name }}</a></li>
                             @endforeach
-                            {{--<li><a href="#">About Us</a></li>--}}
-                            {{--<li><a href="contact.html">Contact</a></li>--}}
-                            @php
-                                $viewer_id=session('viewer_id')
-                            @endphp
-                            <?php if($viewer_id != NULL){ ?>
-
+                            <li><a href="{{ route('crawl.index') }}">Prothom Alo</a></li>
                             <li><a href="#">Diu</a>
                                 <ul class="dropdown">
                                     <li><a href="{{ route('diu.index') }}">Home</a></li>
@@ -124,6 +118,13 @@
 
                                 </ul>
                             </li>
+                            {{--<li><a href="#">About Us</a></li>--}}
+                            {{--<li><a href="contact.html">Contact</a></li>--}}
+                            @php
+                                $viewer_id=session('viewer_id')
+                            @endphp
+                            <?php if($viewer_id != NULL){ ?>
+                            
                             <?php } ?>
 
                         </ul>

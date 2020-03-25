@@ -61,6 +61,39 @@ class AppServiceProvider extends ServiceProvider
             $test = 5.0/9.0 * ($temper - 32) ;
             $weath->with('test',$test);
         });
+view::composer('frontend.crwaling',function($weath){
+    $forecast = new Forecast('6158396b756619681ed516e26fa4818d');
+    $info = $forecast->get('23.8103', '90.4125');
+
+    $temper = $info['currently'];
+
+    $test = $temper['icon'];
+    $temper = $temper['temperature'];
+    $test = 5.0/9.0 * ($temper - 32) ;
+    $weath->with('test',$test);
+});
+view::composer('frontend.addpost',function($weath){
+    $forecast = new Forecast('6158396b756619681ed516e26fa4818d');
+    $info = $forecast->get('23.8103', '90.4125');
+
+    $temper = $info['currently'];
+
+    $test = $temper['icon'];
+    $temper = $temper['temperature'];
+    $test = 5.0/9.0 * ($temper - 32) ;
+    $weath->with('test',$test);
+});
+view::composer('frontend.adddiupost',function($weath){
+    $forecast = new Forecast('6158396b756619681ed516e26fa4818d');
+    $info = $forecast->get('23.8103', '90.4125');
+
+    $temper = $info['currently'];
+
+    $test = $temper['icon'];
+    $temper = $temper['temperature'];
+    $test = 5.0/9.0 * ($temper - 32) ;
+    $weath->with('test',$test);
+});
  view::composer('frontend.diuindex',function($weath){
             $forecast = new Forecast('6158396b756619681ed516e26fa4818d');
             $info = $forecast->get('23.8103', '90.4125');

@@ -32,13 +32,13 @@
 
                                     <div class="form-group">
                                          <label>Selects</label>
-                             <select   name="cat_id" id="select" class="form-control">
-                                <option value="">Enter Category Name...</option>
-                                @foreach($cat as $category)
-                                    <option value="{{ $category->id }}" @if(old('cat_id') == $category->id) selected @endif>{{ $category->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                                         <select   name="cat_id" id="select" class="form-control">
+                                            <option value="">Enter Category Name...</option>
+                                            @foreach($cat as $category)
+                                                <option value="{{ $category->id }}" @if(old('cat_id') == $category->id) selected @endif>{{ $category->name }}</option>
+                                            @endforeach
+                                         </select>
+                                    </div>
 
                                     <div class="form-group">
                                         <label>Upload Image</label>
@@ -67,7 +67,7 @@
                                             <option value="Pin Post">Pin Post</option>
                                             <option value="Normal Post">Normal Post</option>
                                         </select>
-</div>
+                                    </div>
 
 
 

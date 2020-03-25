@@ -105,11 +105,14 @@
 
 
             <li>
-                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Comment<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> User Posts<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
 
                     <li>
-                        <a href="{{ url('/comment') }}">All Comments</a>
+                        <a href="{{ route('adminviewpost') }}">Panding Posts</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('adminviewdiupost') }}">Panding Diu Posts</a>
                     </li>
 
 

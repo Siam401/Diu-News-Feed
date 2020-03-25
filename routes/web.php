@@ -10,7 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::resource('photo', 'PhotoController');
+Route::resource('crawl', 'CrawlingController');
 
 Route::group(['prefix'=>'/'],function(){
     Route::get('/',['as'=>'layouts.index', 'uses'=>'PostController@home']);
@@ -22,6 +23,10 @@ Route::group(['prefix'=>'/'],function(){
     Route::get('/viewer/registration/page','ViewerController@registration')->name('viewer.registrationindex');
     Route::post('/viewer/registration','ViewerController@registration_store')->name('viewer.store');
     Route::get('/viewer/logout','ViewerController@logout_viewer')->name('viewer.logout');
+    Route::get('/viewer/addpost','ViewerController@viewer_addpost')->name('viewer.viewer_addpost');
+    Route::get('/viewer/adddiupost','ViewerController@viewer_adddiupost')->name('viewer.viewer_adddiupost');
+    Route::post('/viewer/addpost','ViewerController@addpost')->name('viewer.addpost');
+    Route::post('/viewer/adddiupost','ViewerController@adddiupost')->name('viewer.adddiupost');
     Route::get('/diu/','DiupostController@home')->name('diu.index');
     Route::get('/diu/category/{id}/posts','DiupostController@catposts')->name('diu.catposts');
     Route::get('diu/single/{id}',['as'=>'diusinglePost', 'uses'=>'DiupostController@single']);
@@ -48,6 +53,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('login', 'LoginController');
     Route::resource('user', 'UserController');
     Route::resource('mail', 'MailController');
+    Route::get('/admin/userpost', 'ViewerController@adminviewpost')->name('adminviewpost');
+    Route::get('/admin/userdiupost', 'ViewerController@adminviewdiupost')->name('adminviewdiupost');
+    Route::get('/admin/approve/userpost/{id}', 'ViewerController@approvepost')->name('approvepost');
+    Route::get('/admin/approve/userdiupost/{id}', 'ViewerController@approvediupost')->name('approvediupost');
+
     Route::get('/mail/confirmation/{token}', 'MailController@confirmation')->name('confirmation');
     Route::get('/user/confirmation/{token}', 'UserController@confirmation')->name('confirmation');
 });

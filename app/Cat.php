@@ -13,4 +13,9 @@ class Cat extends Model
     {
         return $this->hasMany(Post::class);
     }
+    
+    public function userpost()
+    {
+        return $this->hasMany(Userpost::class);
+    }
 }

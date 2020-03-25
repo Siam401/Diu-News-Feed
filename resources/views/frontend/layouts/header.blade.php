@@ -51,6 +51,8 @@
                             <h6><strong style="color: #fff;"><i class="fa fa-user">Welcome {{ $viewer_name }}!</i></strong></h6>
                             </span>
                             <div class="login d-flex">
+                            <a href="{{ route('viewer.viewer_adddiupost') }}">Add diu post</a>
+                            <a href="{{ route('viewer.viewer_addpost') }}">Add post</a>
                             <a href="{{ route('viewer.logout') }}">Logout</a>
 
                             </div>

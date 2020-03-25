@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Sli;
 use Illuminate\Http\Request;
+use Symfony\Component\DomCrawler\Crawler;
+use Symfony\Component\CssSelector\CssSelectorConverter;
+
 
 class PhotoController extends Controller
 {
@@ -14,7 +17,30 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        //
+        // $url= 'https://www.pinterest.com/search/pins/?q=cat&rs=typed&term_meta[]=cat%7Ctyped';
+        $url = 'https://bikroy.com/bn/ads/bangladesh/mobile-phones?categoryType=ads';
+        $client = new \GuzzleHttp\Client();
+       // $res = $client->request('GET', $url);
+        $res = $client->get('https://en.prothomalo.com/international');
+        $crawler = new Crawler($res->getBody()->getContents());
+
+        $current = $crawler->filter('.wrapper')->filter('.inner')->filter('.each_news')->each(function (Crawler $node, $i) {
+            return $node;
+        });
+       // dd($current);
+        foreach ($current as $new) {
+            $title = $new->filter('.title')->text();
+            $author = $new->filter('.author')->text();
+            $content = $new->filter('.content_right')->text();
+            $image = $new->filter('img')->attr('srcset');
+
+//            $category = new Category();
+//            $category->title = $title;
+//            $category->save();
+        }
+       // dd($current);
+        exit;
+        //dd($current);
     }
 
     /**
